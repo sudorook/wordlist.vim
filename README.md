@@ -1,7 +1,7 @@
 # wordlist.vim
 
 This is a list of words, predominantly technological or scientific jargon, that
-vim's spellchecker will say are misspelled.
+Vim's spellchecker will say are misspelled.
 
 To install the wordlist in `${HOME}/.vim/spell/`, run:
 ```
