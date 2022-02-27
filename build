@@ -1,0 +1,7 @@
+#! /bin/bash
+set -eu
+
+DIR="$(dirname "${0}")"
+
+cd "${DIR}"/spell
+vim -E -c "mkspell! en.utf-8.add" +qall
