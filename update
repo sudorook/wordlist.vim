@@ -1,14 +1,32 @@
 #! /bin/bash
 set -eu
 
-VIMSPELLDIR=${HOME}/.vim/spell/
-TMP="$(mktemp)"
+#
+# Augment this repo's word list with the Vim/Neovim en.utf-8.add file.
+#
 
+function update_from_vim {
+  local vimspelldir=${HOME}/.vim/spell/
+  mkdir -p "${vimspelldir}"
+  if [ -f "${vimspelldir}"/en.utf-8.add ]; then
+    cat "${vimspelldir}"/en.utf-8.add > "${TMP}"
+    cat spell/en.utf-8.add >> "${TMP}"
+    sort -u "${TMP}" > spell/en.utf-8.add
+  fi
+}
+
+function update_from_neovim {
+  local nvimspelldir=${HOME}/.config/nvim/spell/
+  mkdir -p "${nvimspelldir}"
+  if [ -f "${nvimspelldir}"/en.utf-8.add ]; then
+    cat "${nvimspelldir}"/en.utf-8.add > "${TMP}"
+    cat spell/en.utf-8.add >> "${TMP}"
+    sort -u "${TMP}" > spell/en.utf-8.add
+  fi
+}
+
+TMP="$(mktemp)"
 trap 'rm -f "${TMP}"; exit' INT TERM ERR EXIT
 
-mkdir -p "${VIMSPELLDIR}"
-if [ -f "${VIMSPELLDIR}/en.utf-8.add" ]; then
-  cat "${VIMSPELLDIR}/en.utf-8.add" > "${TMP}"
-  cat "spell/en.utf-8.add" >> "${TMP}"
-  sort -u "${TMP}" > spell/en.utf-8.add
-fi
+update_from_vim
+update_from_neovim
