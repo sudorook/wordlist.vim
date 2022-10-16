@@ -6,18 +6,24 @@ misspelled.
 
 ## Installation
 
-To install the wordlist in `${HOME}/.vim/spell/` and
-`${HOME}/.config/nvim/spell`, run:
+First, compile the `.spl` binary from the word list:
+```
+./build
+```
+
+Then, install the wordlist in `${HOME}/.vim/spell/` and
+`${HOME}/.config/nvim/spell/`, run:
 ```
 ./install
 ```
 
-If you would rather append the list to one you already use, then run:
+Alternatively, should you would rather append the list to one that already
+exists in your Vim/Neovim directory, run:
 ```
 ./append
 ```
 
-The script will append the list to your current one while removing any
+This script will append the list to your current one while removing any
 duplicate terms.
 
 Run `./uninstall` to remove `en.utf-8.add` and `en.utf-8.add.spl`.
