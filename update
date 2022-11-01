@@ -5,28 +5,27 @@ set -eu
 # Augment this repo's word list with the Vim/Neovim en.utf-8.add file.
 #
 
-function update_from_vim {
+function update_word_list {
   local vimspelldir=${HOME}/.vim/spell/
+  local neovimspelldir=${HOME}/.config/nvim/spell/
+  
+  cat spell/en.utf-8.add > "${TMP}"
+
   mkdir -p "${vimspelldir}"
   if [ -f "${vimspelldir}"/en.utf-8.add ]; then
-    cat "${vimspelldir}"/en.utf-8.add > "${TMP}"
-    cat spell/en.utf-8.add >> "${TMP}"
-    sort -u "${TMP}" > spell/en.utf-8.add
+    cat "${vimspelldir}"/en.utf-8.add >> "${TMP}"
   fi
-}
 
-function update_from_neovim {
-  local nvimspelldir=${HOME}/.config/nvim/spell/
-  mkdir -p "${nvimspelldir}"
-  if [ -f "${nvimspelldir}"/en.utf-8.add ]; then
-    cat "${nvimspelldir}"/en.utf-8.add > "${TMP}"
-    cat spell/en.utf-8.add >> "${TMP}"
-    sort -u "${TMP}" > spell/en.utf-8.add
+  mkdir -p "${neovimspelldir}"
+  if [ -f "${neovimspelldir}"/en.utf-8.add ]; then
+    cat "${neovimspelldir}"/en.utf-8.add >> "${TMP}"
   fi
+ 
+  mv spell/en.utf-8.add spell/en.utf-8.add_$(date +%Y%m%d-%H%M%S).bak
+  sort -u "${TMP}" > spell/en.utf-8.add
 }
 
 TMP="$(mktemp)"
 trap 'rm -f "${TMP}"; exit' INT TERM ERR EXIT
 
-update_from_vim
-update_from_neovim
+update_word_list
