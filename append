@@ -11,7 +11,7 @@ function update_vim {
   if [ -f "${vimspelldir}"/en.utf-8.add ]; then
     cat "${vimspelldir}"/en.utf-8.add > "${TMP}"
     cat spell/en.utf-8.add >> "${TMP}"
-    sort -u "${TMP}" > "${vimspelldir}"/en.utf-8.add
+    sort -d -f -u "${TMP}" > "${vimspelldir}"/en.utf-8.add
   else
     cp spell/en.utf-8.add "${vimspelldir}"/en.utf-8.add
   fi
@@ -23,7 +23,7 @@ function update_neovim {
   if [ -f "${nvimspelldir}"/en.utf-8.add ]; then
     cat "${nvimspelldir}"/en.utf-8.add > "${TMP}"
     cat spell/en.utf-8.add >> "${TMP}"
-    sort -u "${TMP}" > "${nvimspelldir}"/en.utf-8.add
+    sort -d -f -u "${TMP}" > "${nvimspelldir}"/en.utf-8.add
   else
     cp spell/en.utf-8.add "${nvimspelldir}"/en.utf-8.add
   fi

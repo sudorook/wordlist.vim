@@ -22,7 +22,7 @@ function update_word_list {
   fi
  
   mv spell/en.utf-8.add spell/en.utf-8.add_$(date +%Y%m%d-%H%M%S).bak
-  sort -u "${TMP}" > spell/en.utf-8.add
+  sort -d -f -u "${TMP}" > spell/en.utf-8.add
 }
 
 TMP="$(mktemp)"
