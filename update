@@ -21,7 +21,7 @@ function update_word_list {
     cat "${neovimspelldir}"/en.utf-8.add >> "${TMP}"
   fi
 
-  mv "${DIR}"/spell/en.utf-8.add spell/en.utf-8.add.bak
+  mv "${DIR}"/spell/en.utf-8.add spell/en.utf-8.add_"$(date +%Y%m%d-%H%M%S)".bak
   sort -d -f -u "${TMP}" > "${DIR}"/spell/en.utf-8.add
 }
 
