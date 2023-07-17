@@ -10,7 +10,7 @@ DIR="$(dirname "${0}")"
 function update_word_list {
   local vimspelldir=${HOME}/.vim/spell/
   local neovimspelldir=${HOME}/.config/nvim/spell/
-  
+
   cat "${DIR}"/spell/en.utf-8.add > "${TMP}"
 
   if [ -f "${vimspelldir}"/en.utf-8.add ]; then
