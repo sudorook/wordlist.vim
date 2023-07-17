@@ -18,7 +18,7 @@ function update_vim {
 }
 
 function update_neovim {
-  local nvimspelldir=${HOME}/.vim/spell/
+  local nvimspelldir=${HOME}/.config/nvim/spell/
   mkdir -p "${nvimspelldir}"
   if [ -f "${nvimspelldir}"/en.utf-8.add ]; then
     cat "${nvimspelldir}"/en.utf-8.add > "${TMP}"
