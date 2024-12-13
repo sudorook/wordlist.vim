@@ -23,6 +23,7 @@
 *.cab
 *.xar
 *.zst
+*.tzst
 
 # Packing-only formats
 *.iso
@@ -271,6 +272,8 @@ $RECYCLE.BIN/
 *.synctex.gz
 *.synctex.gz(busy)
 *.pdfsync
+*.rubbercache
+rubber.cache
 
 ## Build tool directories for auxiliary files
 # latexrun
@@ -369,6 +372,9 @@ acs-*.bib
 *.lg
 *.trc
 *.xref
+
+# hypdoc
+*.hd
 
 # hyperref
 *.brf
