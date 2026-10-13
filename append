@@ -50,7 +50,7 @@ function update_neovim {
 }
 
 TMP="$(mktemp)"
-trap 'rm -f "${TMP}"; exit' INT TERM ERR EXIT
+trap 'rm -f "${TMP}"' EXIT
 
 update_vim
 update_neovim

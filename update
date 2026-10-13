@@ -44,6 +44,6 @@ function update_word_list {
 }
 
 TMP="$(mktemp)"
-trap 'rm -f "${TMP}"; exit' INT TERM ERR EXIT
+trap 'rm -f "${TMP}"' EXIT
 
 update_word_list
